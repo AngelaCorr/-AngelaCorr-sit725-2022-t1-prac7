@@ -1,0 +1,29 @@
+{
+  "name": "sit725-2022-t1-prac3",
+  "version": "1.0.0",
+  "description": "practical3",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngelaCorr/sit725-2022-t1-prac3.git"
+  },
+  "keywords":[
+    "Node.js",
+    "Express",
+    "HTML",
+    "JS",
+    "C33"
+  ],
+  "author": "Angela Corriero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngelaCorr/sit725-2022-t1-prac3/issues"
+  },
+  "homepage": "https://github.com/AngelaCorr/sit725-2022-t1-prac3#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
