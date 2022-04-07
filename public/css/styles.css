@@ -22,3 +22,11 @@
 .modal-div {
     background-color: grey;
 }
+#card-section.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#card-section.row .col{
+    margin-left: 0;
+}
