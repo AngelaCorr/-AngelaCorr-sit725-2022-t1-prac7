@@ -3,6 +3,37 @@ const clickMe = () => {
     alert("Have a nice day!")
 }
 
+const addProjectToApp =(project) => {
+    $.ajax({
+        url: '/api/projects',
+        data: project,
+        type: 'POST',
+        success: (result) =>{
+            alert(result.message);
+            location.reload();
+        }
+    })
+}
+
+const submitform = () =>{
+    let formData ={};
+    formData.title = $('#title').val();
+    formData.image = $('#image').val();
+    formData.link = $('#Link').val();
+    formData.desciption = $('#description').val();
+
+    console.log("Form Data Submitted:", formData);
+    addProjectToApp(formData);
+   
+}
+
+const getProjects = () => {
+    $.get('/api/projects',(response) => {
+        if(response.statusCode==200){
+            addCards(response.data);
+        }
+    })
+}
 const addCards = (items) => {
     items.forEach(item => {
     let itemToAppend = '<div class="col s4 center-align">'+
@@ -16,13 +47,7 @@ const addCards = (items) => {
     $("#card-section").append(itemToAppend)
     });
     }
-const getProjects = () => {
-    $.get('/api/projects',(response) => {
-        if(response.statusCode==200){
-            addCards(response.data);
-        }
-    })
-}
+
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
