@@ -11,15 +11,18 @@ const addProjectToApp =(project) => {
         success: (result) =>{
             alert(result.message);
             location.reload();
+        },
+        error: (result) =>{
+            alert(result);
         }
     })
 }
 
-const submitform = () =>{
+const submitForm = () =>{
     let formData ={};
     formData.title = $('#title').val();
     formData.image = $('#image').val();
-    formData.link = $('#Link').val();
+    formData.link = $('#link').val();
     formData.desciption = $('#description').val();
 
     console.log("Form Data Submitted:", formData);
