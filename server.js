@@ -3,6 +3,9 @@ var app = express()
 var cors= require("cors")
 const MongoClient=require ("mongodb").MongoClient;
 let projectCollection;
+let http = require('http').createServer(app);
+
+let io = require('socket.io')(http);
 
 const uri = "mongodb+srv://ACORR12:Tinashe2009@cluster0.x1035.mongodb.net/SIT725_2022_t1?retryWrites=true&w=majority"
 const client = new MongoClient(uri,{useNewUrlParser:true})
@@ -79,10 +82,23 @@ const cardList = [
     
 app.use(express.static(__dirname+'/public'));
 app.use(cors)
+
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+  setInterval(()=>{
+    socket.emit('number', parseInt(Math.random()*10));
+  }, 1000);
+
+});
+
 var port = process.env.port || 3000;
 
-app.listen(port,()=>{
-    console.log("App listening to: "+port)
-    createCollection("Trees")
-    
-})
+http.listen(port,()=>{
+    console.log("App running at http://localhost: ", port);
+
+});
+
